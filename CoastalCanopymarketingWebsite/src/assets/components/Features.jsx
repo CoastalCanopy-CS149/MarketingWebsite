@@ -4,17 +4,17 @@ const features = [
   {
     icon: Users,
     title: "Community Reporting",
-    description: "Empower local communities to report on mangrove health and threats in real-time.",
+    description: "Empower local communities to protect mangroves by reporting illegal activities, deforestation, and environmental threats. Our platform ensures anonymous reporting and direct alerts to authorities for quick action.",
   },
   {
     icon: MapPin,
     title: "Mangrove Mapping",
-    description: "Utilize satellite imagery and user data to create accurate, up-to-date mangrove forest maps.",
+    description: "Explore real-time interactive maps of mangrove forests, powered by satellite imagery. Track mangrove coverage, identify high-risk areas, and contribute to conservation efforts with accurate geographical insights.",
   },
   {
     icon: LineChart,
     title: "Mangrove Monitoring",
-    description: "Track long-term changes in mangrove ecosystems to inform conservation efforts.",
+    description: "Stay updated on mangrove health with AI-driven monitoring. Our system analyzes historical data to predict risks, detect potential threats, and provide timely alerts, helping to prevent deforestation and ensure long-term sustainability.",
   },
 ]
 
