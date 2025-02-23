@@ -3,31 +3,31 @@ const teamMembers = [
         name: "Dilki Wathsala",
         role: "Leader/Back-end Developer",
         image: "/Images/Wathsala.jpg",
-        description: "Expert in mangrove ecosystems with over 15 years of research experience.",
+        description: "A visionary leader driving the development of CoastalCanopy.lk,ensuring seamless collaboration and impactful outcomes.",
     },
     {
         name: "Dinaya Guruge",
         role: "ML Engineer",
         image: "/Images/Dinaya.jpg",
-        description: "Develops innovative tech solutions for environmental monitoring and conservation.",
+        description: " A forward-thinking team member with expertise in project management and system integration.",
     },
     {
         name: "Lawanya Malawige",
-        role: "Back-end Developer",
+        role: "Front-end Developer",
         image: "/Images/Lawanya.jpg",
-        description: "Bridges the gap between scientific research and local communities.",
+        description: " A motivated team member with a passion for community engagement and environmental conservation.",
     },
     {
         name: "Malsha Gamage",
         role: "Back-end Developer",
         image: "/Images/Malsha.jpg",
-        description: "Analyzes complex environmental data to inform conservation strategies.",
+        description: " A dedicated and passionate computer science student with a focus on software development and sustainable technologies.",
     },
     {
         name: "Devin Nanayakkara",
         role: "Front-end Developer",
         image: "/Images/Devin.jpg",
-        description: "Analyzes complex environmental data to inform conservation strategies.",
+        description: " An aspiring computer science enthusiast with a keen interest in environmental sustainability.",
     },
   ]
   
