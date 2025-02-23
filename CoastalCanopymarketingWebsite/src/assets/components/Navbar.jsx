@@ -9,12 +9,13 @@ function Navbar() {
   }
 
   return (
-    <header className="bg-green-800 text-white fixed w-full z-10">
+    <header className="bg-green-950 text-white fixed w-full z-10">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold">
+        <Link to="/" className="text-2xl font-bold flex items-center">
+          <img src="/Images/logo.png" className="mr-2 h-16 w-16" />
           Coastal Canopy
         </Link>
-        
+
         <nav className="hidden md:flex space-x-4">
           <button onClick={() => scrollToSection("features")} className="hover:text-green-200">
             Features
@@ -32,7 +33,10 @@ function Navbar() {
             Contact
           </button>
         </nav>
-        <button className="bg-transparent hover:bg-green-700 text-white font-semibold py-2 px-4 border border-white hover:border-transparent rounded">
+        <button
+          onClick={() => scrollToSection("features")}
+          className="bg-transparent hover:bg-green-700 text-white font-semibold py-2 px-4 border border-white hover:border-transparent rounded"
+        >
           Get Started
         </button>
       </div>
