@@ -1,9 +1,20 @@
 import { Link } from "react-router-dom"
-import { Facebook, Twitter, Instagram } from "lucide-react"
+import { Facebook, Linkedin, Instagram } from "lucide-react"
 
 function Footer() {
+  const handleClick = () => {
+    window.open("https://coastalcanopy.org.lk", "_blank");
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+  
   return (
-    <footer className="bg-green-900 text-white py-8">
+    <footer className="bg-green-950 text-white py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
@@ -14,49 +25,46 @@ function Footer() {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="hover:text-green-300">
-                  Home
-                </Link>
+                <button onClick={() => scrollToSection("features")} className="hover:text-green-200">
+                  Features
+                </button>
               </li>
+
               <li>
-                <Link to="/about" className="hover:text-green-300">
-                  About Us
-                </Link>
+              <button onClick={() => scrollToSection("about")} className="hover:text-green-200">
+                About
+              </button>
               </li>
+
               <li>
-                <Link to="/contact" className="hover:text-green-300">
+                <button onClick={() => scrollToSection("contact")} className="hover:text-green-200">
                   Contact
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
             <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-green-300">
+              <a href="https://www.facebook.com/people/Coastal-Canopy/61572263144876/?rdid=oeu65nn07wFbLWuj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1Do7jm4fVm%2F" className="hover:text-green-300">
                 <Facebook />
               </a>
-              <a href="#" className="hover:text-green-300">
-                <Twitter />
+              <a href="https://www.linkedin.com/company/106072182/admin/dashboard/" className="hover:text-green-300">
+                <Linkedin />
               </a>
-              <a href="#" className="hover:text-green-300">
+              <a href="https://www.instagram.com/_coastalcanopy.lk_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="hover:text-green-300">
                 <Instagram />
               </a>
+              
             </div>
           </div>
           <div className="w-full md:w-1/4">
-            <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
-            <p className="mb-2">Stay updated with our latest news and events.</p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="px-3 py-2 bg-green-800 text-white rounded-l-md focus:outline-none"
-              />
-              <button type="submit" className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r-md">
-                Subscribe
-              </button>
-            </form>
+            <button 
+              onClick={handleClick} 
+              className=" text-white px-4 py-2 rounded "
+            >
+              Visit Coastal Canopy
+            </button>
           </div>
         </div>
         <div className="mt-8 text-center">
