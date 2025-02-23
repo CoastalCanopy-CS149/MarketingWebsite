@@ -7,14 +7,57 @@ function Contact() {
     message: "",
   })
 
-  const handleChange = (e) => {
+  const [errors, setErrors] = useState({
+  name: "",
+  email: "",
+  message: "",
+})
+  
+const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+    setErrors({ ...errors, [e.target.name]: "" })
+  }
+
+  const validateForm = () => {
+    let valid = true
+    const newErrors = { name: "", email: "", message: "" }
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Please enter your name"
+      valid = false
+    } else if(!/^[A-Za-z\s]+$/.test(formData.name)) {
+      newErrors.name = "Name should contain only letters"
+      valid = false
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Please enter your email"
+      valid = false
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address"
+      valid = false 
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Please enter your message"
+      valid = false
+    }
+
+    setErrors(newErrors)
+    return valid
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (!validateForm()) return
     // Handle form submission
     console.log("Form submitted:", formData)
+   
+    const subject = encodeURIComponent(`Contact Form Submission from ${formData.name}`)
+    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`)
+    window.location.href = `mailto:coastalcanopy.lk@gmail.com?subject=${subject}&body=${body}`
+
     // Reset form
     setFormData({ name: "", email: "", message: "" })
   }
@@ -32,8 +75,8 @@ function Contact() {
               onChange={handleChange}
               placeholder="Your Name"
               className="w-full px-3 py-2 border rounded-md"
-              required
-            />
+              />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
           <div className="mb-4">
             <input
@@ -43,8 +86,8 @@ function Contact() {
               onChange={handleChange}
               placeholder="Your Email"
               className="w-full px-3 py-2 border rounded-md"
-              required
-            />
+              />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
           <div className="mb-4">
             <textarea
@@ -54,8 +97,8 @@ function Contact() {
               placeholder="Your Message"
               rows={4}
               className="w-full px-3 py-2 border rounded-md"
-              required
-            />
+              />
+              {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
           </div>
           <button
             type="submit"

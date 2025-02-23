@@ -2,12 +2,29 @@ import { useState } from "react"
 
 function FeedbackSection() {
   const [feedback, setFeedback] = useState("")
+  const [error, setError] = useState("")
+  const [submitted, setSubmitted] = useState(false) 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Handle feedback submission
+    setSubmitted(true)
+
+    if (!feedback.trim()) {
+      setError("Please enter your feedback")
+      return
+    }
+
+   // Handle feedback submission
+    setError("")
     console.log("Feedback submitted:", feedback)
+
+    const subject = encodeURIComponent("User Feedback for CoastalCanopy.lk")
+    const body = encodeURIComponent(feedback)
+    window.location.href = `mailto:coastalcanopy.lk@gmail.com?subject=${subject}&body=${body}`
+
     setFeedback("")
+    setSubmitted(false)
+   
   }
 
   return (
@@ -27,6 +44,7 @@ function FeedbackSection() {
               rows={6}
               className="w-full p-2 mb-4 text-black rounded"
             />
+            {error && <p className="text-red-500 mb-4">{error}</p>}
             <button
               type="submit"
               className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
