@@ -14,6 +14,7 @@ function Navbar() {
         <Link to="/" className="text-2xl font-bold">
           Coastal Canopy
         </Link>
+        
         <nav className="hidden md:flex space-x-4">
           <button onClick={() => scrollToSection("features")} className="hover:text-green-200">
             Features

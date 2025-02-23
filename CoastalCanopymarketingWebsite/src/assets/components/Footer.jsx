@@ -7,8 +7,8 @@ function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
-            <h3 className="text-xl font-bold mb-4">MangroveGuard</h3>
-            <p>Protecting our coastal ecosystems, one mangrove at a time.</p>
+            <h3 className="text-xl font-bold mb-4">CoastalCanopy</h3>
+            <p>Guarding Green Roots.</p>
           </div>
           <div className="w-full md:w-1/4 mb-6 md:mb-0">
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
@@ -60,7 +60,7 @@ function Footer() {
           </div>
         </div>
         <div className="mt-8 text-center">
-          <p>&copy; {new Date().getFullYear()} MangroveGuard. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CoastalCanopy. All rights reserved.</p>
         </div>
       </div>
     </footer>
