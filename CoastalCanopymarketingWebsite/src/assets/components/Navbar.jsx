@@ -50,7 +50,7 @@ function Navbar() {
         </nav>
         <button
           onClick={() =>
-            (window.location.href = "https://coastalcanopy.org.lk")
+            (window.location.href = "#")
           }
           className="bg-gradient-to-r from-green-400 via-emerald-500 to-green-700 hover:from-green-500 hover:via-emerald-600 hover:to-green-800 text-white font-bold py-2 px-8 border border-white hover:border-transparent rounded-full shadow-md text-lg transition-all duration-300 ease-in-out"
           style={{ fontFamily: "'Poppins', sans-serif" }}
