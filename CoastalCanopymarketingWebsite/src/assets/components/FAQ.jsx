@@ -1,98 +1,123 @@
-import { useState } from "react"
+"use client";
 
-const faqs = [
-  {
-    question: "🌿What is a mangrove?",
-    answer:
-      "A mangrove is a type of coastal tree or shrub that grows in salty or brackish water along shorelines, estuaries, and tidal areas in tropical and subtropical regions. Mangroves have special adaptations like aerial roots (prop roots or pneumatophores) that help them survive in waterlogged and oxygen-poor soil.",
-  },
-  {
-    question: "🌍Why are mangroves important?",
-    answer: [
-      "Coastal Protection     - They act as natural barriers against storms, tsunamis, and erosion.",
-      "Biodiversity Hotspots  - Provide shelter and breeding grounds for fish and other wildlife.",
-      "Carbon Storage         - Store large amounts of carbon, helping to combat climate change.",
-      "Livelihood Support     - Local communities depend on them for fishing, and ecotourism.",
-    ],
-  },
-  {
-    question: "🌱What are the different types of mangroves?",
-    answer:
-      "Some common mangrove species include red mangrove (Rhizophora), black mangrove (Avicennia), white mangrove (Laguncularia), and buttonwood mangrove (Conocarpus)",
-  },
-  {
-    question: "⚠️Why are the threats to mangroves?",
-    answer: [
-      "Coastal development",
-      "Pollution",
-      "Climate change",
-      "Overharvesting and unsustainable practices", 
-      "Invasive species",
-    ],
-  },
-  {
-    question: "💚How does Coastal Canopy support mangrove conservation?",
-    answer: 
-      "Coastal Canopy supports mangrove conservation by leveraging technology and community engagement. Through GIS-based mapping, users can monitor mangrove coverage, while community reporting allows people to flag threats like deforestation and pollution. Our gamification system encourages participation with rewards, and we provide educational resources to raise awareness. Additionally, we collaborate with environmental organizations and local communities to drive sustainable conservation efforts.",
-    
-  },
-    {
-      question: "💸Is the coastalcanopy.org.lk website free to use?",
-      answer:"Yes, the coastalcanopy.org.lk website is free to use for individuals who wish to participate in mangrove mapping, reporting, and education.",
-    
-  },
-  {
-    question: "🤝 How can organizations partners with Coastal Canopy?",
-    answer:"Organizations can partner with Coastal Canopy by contacting us directly through our website or email.",
-  
-},
-{
-  question: "💖Can I donate to support the project?",
-  answer: "Yes, you can donate to Coastal Canopy to support our mission of protecting mangrove ecosystems. Donations help fund conservation projects, technological advancements, and community outreach initiatives.",
+import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { useInView } from "framer-motion";
 
-},
-]
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
 
-function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null)
-
-  const toggleFaq = (index) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+function AnimatedSection({ children, className }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="faq" className="py-20 bg-green-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-        <div className="max-w-2xl mx-auto">
+    <motion.section
+      ref={ref}
+      variants={sectionVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
+}
+
+function FAQ() {
+  const [activeFaq, setActiveFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: "What is CoastalCanopy?",
+      answer:
+        "CoastalCanopy is a comprehensive web application dedicated to the monitoring, protection, and sustainable management of mangrove ecosystems in Sri Lanka.",
+    },
+    {
+      question: "How can I contribute to mangrove conservation?",
+      answer:
+        "You can contribute by reporting issues, participating in conservation activities, donating to our cause, and spreading awareness about the importance of mangroves.",
+    },
+    {
+      question: "Are mangroves important?",
+      answer:
+        "Yes, mangroves are crucial ecosystems that protect coastlines, provide habitats for marine life, sequester carbon, and support local livelihoods.",
+    },
+    {
+      question: "How does the monitoring system work?",
+      answer:
+        "Our monitoring system uses a combination of satellite imagery, user reports, and field data to track the health and coverage of mangrove forests across Sri Lanka.",
+    },
+    {
+      question: "Can I use CoastalCanopy on my mobile device?",
+      answer:
+        "Yes, CoastalCanopy is fully responsive and can be accessed on desktops, tablets, and mobile phones.",
+    },
+  ];
+
+  return (
+    <div className="w-11/12 max-w-6xl mx-auto my-12 bg-white/20 rounded-3xl text-white backdrop-blur-md p-8 md:p-12 relative z-10" id="faq">
+      <AnimatedSection className="mb-36">
+        <h2
+          className="text-3xl md:text-5xl font-bold text-center mb-12"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          Frequently Asked Questions
+        </h2>
+
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="mb-4">
+            <motion.div
+              key={index}
+              className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+            >
               <button
-                className="flex justify-between items-center w-full text-left font-semibold p-4 bg-white rounded-lg focus:outline-none"
+                className="w-full p-4 text-left font-semibold text-xl flex justify-between items-center"
                 onClick={() => toggleFaq(index)}
               >
                 {faq.question}
-                <span>{openIndex === index ? "-" : "+"}</span>
+                <span className="text-2xl">
+                  {activeFaq === index ? "−" : "+"}
+                </span>
               </button>
-              {openIndex === index && (
-                <div className="p-4 bg-green-100 rounded-b-lg">
-                  {Array.isArray(faq.answer) ? (
-                    <ul className="list-disc list-inside">
-                      {faq.answer.map((point, i) => (
-                        <li key={i}>{point}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p>{faq.answer}</p>
-                  )}
-                </div>
+              {activeFaq === index && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-4 pt-0 text-lg"
+                >
+                  {faq.answer}
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
-    </section>
-  )
+      </AnimatedSection>
+    </div>
+  );
 }
 
-export default FAQ
+export default FAQ;
