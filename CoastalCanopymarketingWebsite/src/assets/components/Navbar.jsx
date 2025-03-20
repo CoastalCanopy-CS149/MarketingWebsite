@@ -9,7 +9,7 @@ function Navbar() {
   }
 
   return (
-    <header className="bg-green-950 text-white fixed w-full z-10">
+    <header className="bg-green-950 text-white w-full z-10">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="text-2xl font-bold flex items-center">
           <img src="/Images/logo.png" className="mr-2 h-16 w-16" />
@@ -17,31 +17,49 @@ function Navbar() {
         </Link>
 
         <nav className="hidden md:flex space-x-4">
-          <button onClick={() => scrollToSection("features")} className="hover:text-green-200">
+          <button
+            onClick={() => scrollToSection("about")}
+            className="hover:text-green-200"
+          >
             Features
           </button>
-          <button onClick={() => scrollToSection("about")} className="hover:text-green-200">
+          <button
+            onClick={() => scrollToSection("hero")}
+            className="hover:text-green-200"
+          >
             About
           </button>
-          <button onClick={() => scrollToSection("team")} className="hover:text-green-200">
+          <button
+            onClick={() => scrollToSection("team")}
+            className="hover:text-green-200"
+          >
             Team
           </button>
-          <button onClick={() => scrollToSection("faq")} className="hover:text-green-200">
+          <button
+            onClick={() => scrollToSection("faq")}
+            className="hover:text-green-200"
+          >
             FAQ
           </button>
-          <button onClick={() => scrollToSection("contact")} className="hover:text-green-200">
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="hover:text-green-200"
+          >
             Contact
           </button>
         </nav>
         <button
-          onClick={() => scrollToSection("features")}
-          className="bg-transparent hover:bg-green-700 text-white font-semibold py-2 px-4 border border-white hover:border-transparent rounded"
+          onClick={() =>
+            (window.location.href = "https://coastalcanopy.org.lk")
+          }
+          className="bg-gradient-to-r from-green-400 via-emerald-500 to-green-700 hover:from-green-500 hover:via-emerald-600 hover:to-green-800 text-white font-bold py-2 px-8 border border-white hover:border-transparent rounded-full shadow-md text-lg transition-all duration-300 ease-in-out"
+          style={{ fontFamily: "'Poppins', sans-serif" }}
         >
-          Get Started
+          Visit Us
         </button>
       </div>
     </header>
-  )
+  );
 }
 
 export default Navbar

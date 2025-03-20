@@ -25,13 +25,13 @@ function Footer() {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => scrollToSection("features")} className="hover:text-green-200">
+                <button onClick={() => scrollToSection("about")} className="hover:text-green-200">
                   Features
                 </button>
               </li>
 
               <li>
-              <button onClick={() => scrollToSection("about")} className="hover:text-green-200">
+              <button onClick={() => scrollToSection("hero")} className="hover:text-green-200">
                 About
               </button>
               </li>

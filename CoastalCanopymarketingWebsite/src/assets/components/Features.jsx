@@ -1,41 +1,76 @@
-import { MapPin, Users, LineChart } from "lucide-react"
+"use client";
 
-const features = [
-  {
-    icon: Users,
-    title: "Community Reporting",
-    description: "Empower local communities to protect mangroves by reporting illegal activities, deforestation, and environmental threats. Our platform ensures anonymous reporting and direct alerts to authorities for quick action.",
-  },
-  {
-    icon: MapPin,
-    title: "Mangrove Mapping",
-    description: "Explore real-time interactive maps of mangrove forests, powered by satellite imagery. Track mangrove coverage, identify high-risk areas, and contribute to conservation efforts with accurate geographical insights.",
-  },
-  {
-    icon: LineChart,
-    title: "Mangrove Monitoring",
-    description: "Stay updated on mangrove health with AI-driven monitoring. Our system analyzes historical data to predict risks, detect potential threats, and provide timely alerts, helping to prevent deforestation and ensure long-term sustainability.",
-  },
-]
+import { motion } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
-function Features() {
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+function AnimatedSection({ children, className }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
-    <section id="features" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Features</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div key={index} className="bg-green-50 p-6 rounded-lg">
-              <feature.icon className="w-12 h-12 text-green-600 mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p>{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+    <motion.section
+      ref={ref}
+      variants={sectionVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
 }
 
-export default Features
+function ContentSection({ title, description }) {
+  return (
+    <div className="space-y-6">
+      <h2 className="text-5xl font-bold tracking-wide text-center">{title}</h2>
+      <p className="text-xl leading-relaxed max-w-2xl mx-auto text-center">
+        {description}
+      </p>
+    </div>
+  );
+}
 
+function Aim() {
+  return (
+    <div className="w-11/12 max-w-6xl mx-auto my-12 bg-white/20 rounded-3xl text-white backdrop-blur-md p-8 md:p-12 relative z-10">
+      <AnimatedSection className="mb-36">
+        <div
+          className="space-y-20"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          <ContentSection
+            title="Our Aim"
+            description="Create a comprehensive, community-oriented web application, CoastalCanopy.lk, dedicated to the monitoring, protection, and sustainable management of mangrove ecosystems in Sri Lanka."
+          />
+
+          <ContentSection
+            title="Our Mission"
+            description="To educate communities and promote sustainable practices that protect and restore mangrove ecosystems."
+          />
+
+          <ContentSection
+            title="Our Vision"
+            description="A Sri Lanka where mangrove forests thrive, safeguarding biodiversity, livelihoods, and the planet."
+          />
+        </div>
+      </AnimatedSection>
+    </div>
+  );
+}
+
+export default Aim;

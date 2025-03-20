@@ -5,7 +5,7 @@ import AboutSection from "../pages/About"
 import TeamSection from "../components/Team"
 import FaqSection from "../components/FAQ"
 import ContactSection from "../pages/Contact"
-import FeedbackSection from "../components/Feedback"
+
 
 function Home() {
   useEffect(() => {
@@ -26,7 +26,7 @@ function Home() {
       <TeamSection />
       <FaqSection />
       <ContactSection />
-      <FeedbackSection />
+
     </div>
   )
 }
