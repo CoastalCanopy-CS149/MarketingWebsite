@@ -3,7 +3,7 @@ import { Facebook, Linkedin, Instagram } from "lucide-react"
 
 function Footer() {
   const handleClick = () => {
-    window.open("#", "_blank");
+    window.open("https://coastalcanopy.org.lk/", "_blank");
   };
 
   const scrollToSection = (sectionId) => {
